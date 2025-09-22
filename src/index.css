@@ -42,7 +42,7 @@ h1 {
     overflow: hidden;
     
     transform: rotateY(180deg);
-    animation: 200s hideCard linear;
+    animation: 2s hideCard linear;
     transition: transform 0.5s;
 }
 
@@ -52,7 +52,7 @@ h1 {
     object-fit: cover;
 
     transform: scale(0);
-    animation: 200s hideImg linear;
+    animation: 2s hideImg linear;
     transition: transform 0s;
     transition-delay: 0.125s;
 }
