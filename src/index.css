@@ -21,9 +21,20 @@ h1 {
     margin-bottom: 1em;
 }
 
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.grid-holder {
+  max-height: 90vh;  /* take up max 80% of viewport height */
+}
+
 .container {
-    height: 450px;
-    width: 450px;
+    width: 650px;
     /*background-color: rebeccapurple;*/
     display: grid;
     grid-template-columns: repeat(10, 1fr);
@@ -31,6 +42,13 @@ h1 {
     gap: 0.25em;
 
 }
+
+
+
+.container > div {
+  aspect-ratio: 1 / 1; /* keeps each cell square */
+}
+
 
 .card {
     background-color: rgb(225, 234, 245);
@@ -42,23 +60,27 @@ h1 {
     overflow: hidden;
     
     transform: rotateY(180deg);
-    animation: 2s hideCard linear;
+    animation: 8s hideCard linear;
     transition: transform 0.5s;
 }
 
+.card.loaded img {
+  animation: fadeIn 0.8s ease forwards;
+}
+
 .card img {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 90%;
+    max-height: 90%;
     object-fit: cover;
 
     transform: scale(0);
-    animation: 2s hideImg linear;
+    animation: 8s hideImg linear;
     transition: transform 0s;
     transition-delay: 0.125s;
 }
 
 @keyframes hideCard {
-    0%, 70% {
+    0%, 90% {
         transform: rotateY(0)
     }
     100% {
@@ -67,15 +89,15 @@ h1 {
 }
 
 @keyframes hideImg {
-    0%, 70% {
+    0%, 90% { /*the 90 was 70 on both image and card, 94 and 95 were 84 and 85*/
         transform: rotateY(0);
         transform: scale(1)
     }
 
-    84%{
+    94%{
         transform: scale(1)
     }
-    85%{
+    95%{
         transform: scale(0)
     }
     100% {
@@ -103,8 +125,8 @@ h1 {
 
 .win-container {
 
-    width: 480px;
-    height: 485px;
+    width: 650px;
+    height: 650px;
     background-color: hsl(223, 21%, 20%);
     border-radius: 5px;
 
@@ -118,8 +140,8 @@ h1 {
     z-index: 1;
     top: 50%;
     left: 50%;
-    margin-top: -220px;
-    margin-left: -240px;
+    margin-top: -290px;
+    margin-left: -325px;
     
     animation: showWin 0.5s linear;
 }
@@ -159,4 +181,17 @@ h1 {
 @keyframes showWin {
    from { transform: rotateY(90deg); }
     to { transform: rotateY(0deg); } 
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    width: 325px;
+    grid-template-columns: repeat(5, 1fr); /* 5 across */
+    grid-template-rows: repeat(20, 1fr);  /* 20 down */
+  }
+  .win-container {
+    margin-top: 50px;
+    top: 0%;
+  }
 }

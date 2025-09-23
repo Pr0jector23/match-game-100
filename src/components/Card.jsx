@@ -1,5 +1,5 @@
 
-const Card = ({item, indx, handleClick}) => {
+const Card = ({item, indx, handleClick, handleLoad}) => {
 
     const itemClass = item.state ? " active " + item.state : ""
 

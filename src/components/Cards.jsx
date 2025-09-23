@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Card from './Card'
 
 //https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1025.png
@@ -69,11 +69,13 @@ const generateList = () => {
 
 const Cards = ({gameWon}) => {
 
-
-
     const [items, setItems] = useState(
         () => generateList()
     )
+
+
+
+
 
     const checkIfWin = () => {
         //console.log(items)
@@ -121,10 +123,12 @@ const Cards = ({gameWon}) => {
     }
 
     return(
-        <div className="container">
-            {items.map((item, index) => (
-                <Card key = {index} item = {item} indx = {index} handleClick = {handleClick}></Card>
-            ))}
+        <div className='grid-holder'>
+            <div className={`container`}>
+                {items.map((item, index) => (
+                    <Card key = {index} item = {item} indx = {index} handleClick = {handleClick}></Card>
+                ))}
+            </div>
         </div>
     )
 }
